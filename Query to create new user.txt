@@ -1,0 +1,19 @@
+1. Query to create new user
+create user report password <your_password> NO
+FORCE_FIRST_PASSWORD_CHANGE set usergroup default;
+2. Query to grant access
+grant SCHEMA_NAME."PublicAccessSchema" to report
+3. Syntax to add to your hdbrole file
+{
+ "role": {
+ "name": "PublicAccessSchema",
+ "schema_privileges": [
+ {
+ "privileges": [
+ "SELECT",
+"EXECUTE"
+ ]
+ }
+ ]
+ }
+}
